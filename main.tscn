@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dehamatqo1dxg"]
+[gd_scene load_steps=25 format=3 uid="uid://dehamatqo1dxg"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5rjkw"]
 [ext_resource type="Texture2D" uid="uid://b8hayd733ibro" path="res://aseprite/robot-standingspritesheet.png" id="2_lhdor"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxeqxklv00f15" path="res://aseprite/robot-spritesheet.png" id="4_cbk4e"]
 [ext_resource type="Script" path="res://playeranimations.gd" id="5_bt0ts"]
 [ext_resource type="Texture2D" uid="uid://8ksfaklqfyqy" path="res://icon.svg" id="7_rfwvc"]
-[ext_resource type="Script" path="res://enemies.gd" id="8_ctqrf"]
+[ext_resource type="PackedScene" uid="uid://dpb6psmc4gsvy" path="res://Enemy.tscn" id="8_nvyx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ug5"]
 size = Vector2(8, 14)
@@ -1017,11 +1017,9 @@ sources/0 = SubResource("TileSetAtlasSource_ns2y4")
 sources/1 = SubResource("TileSetAtlasSource_pw8ww")
 sources/2 = SubResource("TileSetAtlasSource_nrjrj")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s136f"]
-
 [node name="Node2D" type="Node2D"]
 
-[node name="player" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D" parent="." groups=["Player"]]
 input_pickable = true
 script = ExtResource("1_5rjkw")
 metadata/_edit_group_ = true
@@ -1047,13 +1045,4 @@ tile_set = SubResource("TileSet_1ygm6")
 format = 2
 layer_0/tile_data = PackedInt32Array(131071, 131072, 3, 65536, 131072, 3, 65537, 131072, 3, 65539, 131072, 3, 65538, 131072, 3, 65540, 327680, 3, 4, 524288, 0, 5, 655360, 0, 6, 720896, 0, 65542, 393216, 3, 65541, 589824, 3, 65543, 131072, 3, 65544, 131072, 3, 65548, 131072, 3, 65547, 131072, 3, 65546, 131072, 3, 65545, 131072, 3, 65549, 196608, 2, -131059, 0, 1, -65523, 0, 1, 13, 0, 1, -196595, 0, 1, -393203, 0, 1, -327667, 0, 1, -262131, 0, 1, -458739, 0, 0, 131070, 131072, 3, 131069, 131072, 3, 65532, 0, 1, 131068, 65536, 2, -4, 0, 1, -131076, 196608, 1, -65540, 0, 1, -196612, 0, 1, -131077, 131072, 3, -131078, 131072, 3, -131079, 131072, 3, -131080, 131072, 3, -131081, 131072, 3, -131082, 131072, 3, -131083, 131072, 3, -131084, 393216, 0, -65548, 720896, 3, -65549, 589824, 3, -65550, 589824, 3, -65551, 589824, 3, -65552, 589824, 3, -65553, 589824, 3, -65554, 589824, 3, -65555, 589824, 3, -65556, 524288, 3, -131092, 524288, 0, -131091, 655360, 0, -131090, 655360, 0, -131089, 655360, 0, -196624, 524288, 0, -196623, 655360, 0, -196622, 655360, 0, -196621, 720896, 0, -131085, 393216, 1, -131086, 589824, 2, -131087, 589824, 2, -131088, 327680, 1)
 
-[node name="enemy" type="CharacterBody2D" parent="."]
-position = Vector2(67, -20)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("8_ctqrf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
-shape = SubResource("RectangleShape2D_s136f")
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy"]
-texture = ExtResource("7_rfwvc")
+[node name="Area2D" parent="." instance=ExtResource("8_nvyx0")]

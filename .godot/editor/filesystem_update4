@@ -1,2 +1,3 @@
-res://main.tscn
+res://Enemy.tscn
 res://enemies.gd
+res://main.tscn
